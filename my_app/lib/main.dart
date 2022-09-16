@@ -12,9 +12,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    
+    return MaterialApp(
       title: 'Startup Name Generator',
-      home: RandomWords()
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Startup Name Generator'),
+        ),
+        body: const Center(
+          child: RandomWords(),
+        ),
+      ),
     );
   }
 }
@@ -32,19 +40,7 @@ class _RandomWordsState extends State<RandomWords> {
   final _biggerFont = const TextStyle(fontSize: 18);
   @override
   Widget build(BuildContext context) {
-    Widget build(BuildContext context) {
-    return Scaffold(   // NEW from here ...
-      appBar: AppBar(  
-        title: const Text('Startup Name Generator'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.list),
-            onPressed: _pushSaved,
-            tooltip: 'Saved Suggestions',
-          ),
-        ],
-      ),
-    body: ListView.builder(
+    return ListView.builder(
       padding: const EdgeInsets.all(16.0),
       itemBuilder: (context, i) {
         if (i.isOdd) return const Divider();
@@ -75,7 +71,7 @@ class _RandomWordsState extends State<RandomWords> {
               }
             });
           }
-        );
+         );
       },
     );
   }
